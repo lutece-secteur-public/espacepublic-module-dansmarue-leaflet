@@ -1,7 +1,8 @@
 var leafletmap, marker, circle;
 
 function initLeafletMap(mapSelector){
-	leafletmap = L.map(mapSelector);
+	leafletmap = L.map(mapSelector,{
+    fullscreenControl: true});
 	
 	//Layer initialization
 	var layerGroup = L.layerGroup();
