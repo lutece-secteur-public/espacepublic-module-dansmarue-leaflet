@@ -10,7 +10,7 @@
 
     <artifactId>module-leaflet-dansmarue</artifactId>
     <packaging>lutece-plugin</packaging>
-    <version>6.0.3-SNAPSHOT</version>
+    <version>6.0.3</version>
     <name>Lutece Leaflet module for DansMaRue</name>
 
 	<distributionManagement>
@@ -134,7 +134,7 @@
         <connection>scm:git:http://gestionversion.acn/applications_lutece/module-leaflet-dansmarue.git</connection>
         <developerConnection>scm:git:http://gestionversion.acn/applications_lutece/module-leaflet-dansmarue.git</developerConnection>
         <url>http://gestionversion.acn/applications_lutece/module-leaflet-dansmarue.git</url>
-		<tag>HEAD</tag>
+		<tag>module-leaflet-dansmarue-6.0.3</tag>
     </scm>
     <groupId>fr.paris.lutece.plugins</groupId>
 </project>
