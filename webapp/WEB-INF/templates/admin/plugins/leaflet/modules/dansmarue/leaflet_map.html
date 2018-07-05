@@ -48,6 +48,11 @@ function zoomTo(lat,lng){
 	leafletmap.setView([lat,lng],${max_zoom});
 }
 
+function zoomToWithEtat(lat,lng, iconColorChoice){
+	marker = L.marker([lat,lng],{icon: eval(iconColorChoice)}).addTo(leafletmap);
+	leafletmap.setView([lat,lng],${max_zoom});
+}
+
 function dragMarker(lat,lng, latField, lngField){
 	var center = L.latLng(lat,lng);
 	marker.dragging.enable();
