@@ -10,7 +10,7 @@
 
     <artifactId>module-leaflet-dansmarue</artifactId>
     <packaging>lutece-plugin</packaging>
-    <version>6.0.5-SNAPSHOT</version>
+    <version>6.1.0-SNAPSHOT</version>
     <name>Lutece Leaflet module for DansMaRue</name>
 
 	<distributionManagement>
@@ -75,7 +75,7 @@
             <dependency>
                 <groupId>fr.paris.lutece</groupId>
                 <artifactId>lutece-core</artifactId>
-                <version>6.0.1</version>
+                <version>6.1.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
