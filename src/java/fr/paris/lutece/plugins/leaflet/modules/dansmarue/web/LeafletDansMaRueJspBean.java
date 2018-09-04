@@ -124,7 +124,8 @@ public abstract class LeafletDansMaRueJspBean extends PluginAdminPageJspBean{
     /**
      * Gets the leaflet map template
      * @param request
-     * @return
+     *            the HTTP request
+     * @return the JSP return
      */
     public String getMap(HttpServletRequest request){
         Map<String,Object> model = new HashMap<String,Object>();

@@ -44,7 +44,7 @@ public class Address
     private Double  _x;
     private Double  _y;
     private String  _strType;
-    private Integer _id;
+    private Integer _nId;
 
     /**
      * @return the libelleTypo
@@ -55,12 +55,12 @@ public class Address
     }
 
     /**
-     * @param libelleTypo
+     * @param strLibelleTypo
      *            the libelleTypo to set
      */
-    public void setLibelleTypo( String libelleTypo )
+    public void setLibelleTypo( String strLibelleTypo )
     {
-        _strLibelleTypo = libelleTypo;
+        _strLibelleTypo = strLibelleTypo;
     }
 
     /**
@@ -106,12 +106,12 @@ public class Address
     }
 
     /**
-     * @param type
+     * @param strType
      *            the type to set
      */
-    public void setType( String type )
+    public void setType( String strType )
     {
-        _strType = type;
+        _strType = strType;
     }
 
     /**
@@ -119,15 +119,15 @@ public class Address
      */
     public Integer getId( )
     {
-        return _id;
+        return _nId;
     }
 
     /**
-     * @param id
+     * @param nId
      *            the id to set
      */
-    public void setId( Integer id )
+    public void setId( Integer nId )
     {
-        _id = id;
+        _nId = nId;
     }
 }
