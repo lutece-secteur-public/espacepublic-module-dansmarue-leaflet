@@ -1,0 +1,115 @@
+var leafletmap, marker, circle;
+
+function initLeafletMap(mapSelector){
+	leafletmap = L.map(mapSelector,{
+    fullscreenControl: true});
+	
+	//Layer initialization
+	var layerGroup = L.layerGroup();
+	<#list layers_config as layer_config>
+		<@addLayer 
+		layer_type=layer_config.layerType 
+		layer_url=layer_config.layerUrl
+		layer_opacity=layer_config.layerOpacity
+		layer_name=layer_config.layerName
+		layer_base_map=layer_config.layerBaseMap/>
+	</#list>
+	
+	layerGroup.addTo(leafletmap);
+	
+	//Scale settings
+	L.control.scale({
+		imperial: ${show_imperial},
+		metric: ${show_metric}
+	}).addTo(leafletmap);
+	
+	//Initial bounds
+	leafletmap.fitBounds(
+		[
+			[${initial_bottom_bound}, ${initial_left_bound}],
+			[${initial_top_bound}, ${initial_right_bound}]
+		],
+		{
+			animate:false
+		}
+	);
+	
+	//Max bounds
+	leafletmap.setMaxBounds(
+		[
+			[${max_bottom_bound}, ${max_left_bound}],
+			[${max_top_bound}, ${max_right_bound}]
+		]
+	);
+}
+
+function zoomTo(lat,lng){
+	marker = L.marker([lat,lng],{icon: redIcon}).addTo(leafletmap);
+	leafletmap.setView([lat,lng],${max_zoom});
+}
+
+function zoomToWithEtat(lat,lng, iconColorChoice){
+	marker = L.marker([lat,lng],{icon: eval(iconColorChoice)}).addTo(leafletmap);
+	leafletmap.setView([lat,lng],${max_zoom});
+}
+
+function dragMarker(lat,lng, latField, lngField){
+	var center = L.latLng(lat,lng);
+	marker.dragging.enable();
+	//Adding circle
+	circle = L.circle([lat, lng], {
+	    color: '#007FFF',
+	    fillColor: '#77B5FE',
+	    fillOpacity: 0.2,
+	    radius: ${position_radius}
+	}).addTo(leafletmap);
+	var circleBounds = circle.getBounds();
+	marker.on('drag', function (e) {
+		var position = marker.getLatLng();
+		if (circleBounds.contains(position) && (center.distanceTo(position) <= circle.getRadius()))  {
+			lastPosition = position;
+		} else { 
+			marker.setLatLng(lastPosition);
+		}
+		$(latField).val(lastPosition['lat']);
+		$(lngField).val(lastPosition['lng']);
+	});
+}
+
+function removeMap(){
+	leafletmap.remove();
+}
+
+<#macro addLayer layer_type layer_url layer_opacity layer_name="" layer_base_map="">
+	<#if layer_type == 'wms'>
+		layerGroup.addLayer(
+			L.tileLayer.wms("${layer_url}",{
+				layers:"${layer_name}",
+				maxNativeZoom: ${max_native_zoom},
+				maxZoom: ${max_zoom},
+				minZoom: ${min_zoom}
+			}).setOpacity(${layer_opacity?c})
+		);
+	<#elseif layer_type == 'esri'>
+		L.esri.basemapLayer("${layer_base_map}").addTo(leafletmap);
+	
+	    layerGroup.addLayer(
+			L.esri.featureLayer({
+				url: "${layer_url}",
+				maxNativeZoom: ${max_native_zoom},
+				maxZoom: ${max_zoom},
+				minZoom: ${min_zoom}
+			  })
+		);
+	<#elseif layer_type == 'osm'>
+		layerGroup.addLayer(
+			L.tileLayer("${layer_url}", 
+			{
+				attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+				maxNativeZoom: ${max_native_zoom},
+				maxZoom: ${max_zoom},
+				minZoom: ${min_zoom}
+			}).setOpacity(${layer_opacity?c})
+		);
+	</#if>
+</#macro>

@@ -1,0 +1,36 @@
+var projSourceSRID = new Proj4js.Proj("EPSG:27561");
+var projSourceMapSRID = new Proj4js.Proj("EPSG:27561");
+var projDestSRID = new Proj4js.Proj("EPSG:4326");
+
+function addAutocomplete(field,selectCallback){
+	$('#' + field).autocomplete({
+		source : function(request, reponse){
+			$.ajax({
+				url : "${url}",
+				dataType: "jsonp",
+			    data: {
+					types : "${types}",
+					nbResults : ${nb_results}, 
+			    	clientId : "${client_id}",
+					query : request.term
+			    },
+			    success : function(data){
+	                reponse($.map(data.result,function(elem){
+						return {
+							label: elem.libelleTypo,
+							lng: elem.x,
+							lat: elem.y
+						}
+					}));
+	        	}
+	    	});
+		},
+		select: function (event, ui) {
+   		   if(null != selectCallback){
+				selectCallback(ui.item);
+		   }
+   	    },
+   	   minLength: ${min_length},
+   	   delay: ${delay}
+	});
+}

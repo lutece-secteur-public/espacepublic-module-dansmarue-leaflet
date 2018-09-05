@@ -1,0 +1,56 @@
+<#macro adresse_autocomplete_includes>
+	<script src="js/proj4js-combined.js" type="text/javascript"></script>
+	<script src="js/jquery/plugins/ui/jquery.ui.custom-autocomplete.min.js"	type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="css/plugins/jquery/plugins/ui/jquery.autocomplete.css" />
+	<link rel="stylesheet" type="text/css" href="js/jquery/plugins/ui/css/jquery-ui.css" /> 
+</#macro>
+
+<#macro leaflet_map_includes>
+	<#-- <link rel="stylesheet" type="text/css" href="js/plugins/leaflet/leaflet/leaflet.css" /> -->
+	<#-- <script src="js/plugins/leaflet/leaflet/leaflet.js"></script> -->
+	<link rel="stylesheet" type="text/css" href="css/plugins/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
+       integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
+       crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
+       integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
+       crossorigin=""></script>
+	<script src="https://unpkg.com/esri-leaflet@2.1.0"></script>
+	<link rel="stylesheet" href="css/plugins/leaflet/Control.FullScreen.css" />
+	<script src="js/jquery/plugins/leaflet/Control.FullScreen.js"></script>
+
+	<script type="text/javascript">
+	
+	var LeafIcon = L.Icon.extend({
+		options: {
+			 shadowUrl: 'js/plugins/leaflet/leaflet/images/marker-shadow.png',
+			 iconSize: [25, 41],
+			 iconAnchor: [12, 41],
+			 popupAnchor: [1, -34],
+			 shadowSize: [41, 41]
+		}
+	});
+	
+	var greenIcon = new LeafIcon({
+		iconUrl: 'js/plugins/leaflet/leaflet/images/marker-icon-green.png'
+	});
+		
+	var yellowIcon = new LeafIcon({
+		iconUrl: 'js/plugins/leaflet/leaflet/images/marker-icon-yellow.png'
+	});
+	
+	var redIcon = new LeafIcon({
+		iconUrl: 'js/plugins/leaflet/leaflet/images/marker-icon-red.png'
+	});	
+	
+	</script>
+</#macro>
+
+<#macro leaflet_cluster_includes>
+	<#-- <link rel="stylesheet" href="js/plugins/leaflet/leaflet/MarkerCluster.css"/> -->
+    <#-- <link rel="stylesheet" href="js/plugins/leaflet/leaflet/MarkerCluster.Default.css"/> -->
+    <#-- <script src="js/plugins/leaflet/leaflet/leaflet.markercluster.js"></script> -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.0.5/dist/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.0.5/dist/MarkerCluster.Default.css"/>
+    <script src="https://unpkg.com/leaflet.markercluster@1.0.5/dist/leaflet.markercluster.js"></script>
+</#macro>
