@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,14 +37,15 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.web.util.UriUtils;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import fr.paris.lutece.plugins.leaflet.modules.dansmarue.entities.Address;
-import fr.paris.lutece.plugins.leaflet.modules.dansmarue.entities.ResultPOI;
 import fr.paris.lutece.portal.service.util.AppLogService;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
 import fr.paris.lutece.util.httpaccess.HttpAccess;
@@ -55,36 +56,11 @@ import fr.paris.lutece.util.httpaccess.HttpAccessException;
  */
 public class AddressSuggestPOIService implements IAddressSuggestPOIService
 {
-
-    /** The Constant PROPERTY_SUGGEST_POI_URL. */
     // PROPERTIES
-    private static final String PROPERTY_SUGGEST_POI_URL     = "address.autocomplete.srv.url";
+    private static final String PROPERTY_SUGGEST_POI_URL = "address.autocomplete.url";
+    private static final String PROPERTY_CLIENT_ID = "address.autocomplete.clientId";
 
-    /** The Constant PROPERTY_TYPES. */
-    private static final String PROPERTY_TYPES               = "address.autocomplete.types";
-
-    /** The Constant PROPERTY_CLIENT_ID. */
-    private static final String PROPERTY_CLIENT_ID           = "address.autocomplete.clientId";
-
-    /** The Constant PARAMETER_TYPES. */
-    // PARAMETERS
-    private static final String PARAMETER_TYPES              = "types";
-
-    /** The Constant PARAMETER_CLIENT_ID. */
-    private static final String PARAMETER_CLIENT_ID          = "clientId";
-
-    /** The Constant PARAMETER_QUERY. */
-    private static final String PARAMETER_QUERY              = "query";
-
-    /** The Constant CONST_INTERROGATION_MARK. */
-    // MARK
-    private static final String CONST_INTERROGATION_MARK     = "?";
-
-    /** The Constant CONST_ADDITIONNAL_PARAM_MARK. */
-    private static final String CONST_ADDITIONNAL_PARAM_MARK = "&";
-
-    /** The Constant CONST_EQUAL_MARK. */
-    private static final String CONST_EQUAL_MARK             = "=";
+    private static final String ERROR_MESSAGE = "Error retrieving the return of suggest POI";
 
     /**
      * Gets the address item.
@@ -96,50 +72,36 @@ public class AddressSuggestPOIService implements IAddressSuggestPOIService
     @Override
     public List<Address> getAddressItem( String address )
     {
-        String suggestPOIUrl = AppPropertiesService.getProperty( PROPERTY_SUGGEST_POI_URL );
-
-        StringBuilder uri = new StringBuilder( suggestPOIUrl );
-        uri.append( CONST_INTERROGATION_MARK );
-
-        StringBuilder params = new StringBuilder( );
-        // Address query
-        params.append( PARAMETER_QUERY ).append( CONST_EQUAL_MARK ).append( address );
-
-        // Types
-        String types = AppPropertiesService.getProperty( PROPERTY_TYPES );
-        params.append( CONST_ADDITIONNAL_PARAM_MARK );
-        params.append( PARAMETER_TYPES ).append( CONST_EQUAL_MARK ).append( types );
-
-        // Client id
+        String storePOIUrl = AppPropertiesService.getProperty( PROPERTY_SUGGEST_POI_URL );
         String clientId = AppPropertiesService.getProperty( PROPERTY_CLIENT_ID );
-        params.append( CONST_ADDITIONNAL_PARAM_MARK );
-        params.append( PARAMETER_CLIENT_ID ).append( CONST_EQUAL_MARK ).append( clientId );
-
         String response = StringUtils.EMPTY;
 
         try
         {
             HttpAccess httpAccess = new HttpAccess( );
-            uri.append( UriUtils.encodeQuery( params.toString( ), StandardCharsets.UTF_8.toString( ) ) );
-            response = httpAccess.doGet( uri.toString( ) );
+            AppLogService.info( "Appel storePOI pour la récupération des adresses" );
+            String url = storePOIUrl + "/" + clientId + "/poiauto/" + address.replace( " ", "%20" ) + "?";
+            String param = "Parms={\"Entites\":\"ADR,JRDN,VOIE\"}";
+
+            response = httpAccess.doGet( url + UriUtils.encode( param, StandardCharsets.UTF_8.toString( ) ) );
         }
-        catch ( HttpAccessException | UnsupportedEncodingException ex )
+        catch( HttpAccessException | UnsupportedEncodingException ex )
         {
-            AppLogService.error( "Error retrieving the return of suggest POI", ex );
+            AppLogService.error( ERROR_MESSAGE, ex );
         }
 
         ObjectMapper mapper = new ObjectMapper( );
         List<Address> addressList = new ArrayList<>( );
         try
         {
-            ResultPOI result = mapper.readValue( response, ResultPOI.class );
-            addressList = result.getResult( );
+            addressList = Arrays.asList( mapper.readValue( response, Address [ ].class ) );
         }
-        catch ( IOException e )
+        catch( IOException e )
         {
-            AppLogService.error( "Error retrieving the return of suggest POI", e );
+            AppLogService.error( ERROR_MESSAGE, e );
         }
 
         return addressList;
     }
+
 }

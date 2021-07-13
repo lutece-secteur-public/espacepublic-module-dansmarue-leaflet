@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,13 +40,13 @@ public class LeafletDansMaRueConstants
 {
 
     /** The Constant GREEN_ICON. */
-    public static final String GREEN_ICON  = "greenIcon";
+    public static final String GREEN_ICON = "greenIcon";
 
     /** The Constant YELLOW_ICON. */
     public static final String YELLOW_ICON = "yellowIcon";
 
     /** The Constant RED_ICON. */
-    public static final String RED_ICON    = "redIcon";
+    public static final String RED_ICON = "redIcon";
 
     private LeafletDansMaRueConstants( )
     {

@@ -2,7 +2,7 @@
     <!-- Plugin Informations -->
     <name>leaflet-dansmarue</name>
     <class>fr.paris.lutece.portal.service.plugin.PluginDefaultImplementation</class>
-    <version>6.3.5</version>
+    <version>6.5.4-SNAPSHOT</version>
     <documentation/>
     <installation/>
     <changes/>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,6 @@ import java.util.List;
 
 import fr.paris.lutece.plugins.leaflet.modules.dansmarue.entities.Address;
 
-
 /**
  * IAddressSuggestPOIService.
  */
@@ -47,7 +46,8 @@ public interface IAddressSuggestPOIService
     /**
      * Finds a address from the suggest POI WS.
      *
-     * @param address            The address to search in the suggest POI
+     * @param address
+     *            The address to search in the suggest POI
      * @return List of adress matching the requested one
      */
     List<Address> getAddressItem( String address );

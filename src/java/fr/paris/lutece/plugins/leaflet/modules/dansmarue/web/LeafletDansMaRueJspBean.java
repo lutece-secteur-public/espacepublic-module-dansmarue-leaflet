@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,139 +55,139 @@ public abstract class LeafletDansMaRueJspBean extends PluginAdminPageJspBean
 {
 
     /** The Constant serialVersionUID. */
-    private static final long     serialVersionUID             = 7030522625985545691L;
+    private static final long serialVersionUID = 7030522625985545691L;
 
     /** The app name. */
     // PROPERTIES
-    protected String              _appName;
+    protected String _appName;
 
     /** The Constant PROPERTY_RADIUS. */
-    protected static final String PROPERTY_RADIUS              = "leaflet.position.radius";
+    protected static final String PROPERTY_RADIUS = "leaflet.position.radius";
 
     /** The Constant PROPERTY_INITAL_BOTTOM_BOUND. */
     protected static final String PROPERTY_INITAL_BOTTOM_BOUND = "leaflet.initial.bottom.bound";
 
     /** The Constant PROPERTY_INITAL_LEFT_BOUND. */
-    protected static final String PROPERTY_INITAL_LEFT_BOUND   = "leaflet.initial.left.bound";
+    protected static final String PROPERTY_INITAL_LEFT_BOUND = "leaflet.initial.left.bound";
 
     /** The Constant PROPERTY_INITAL_TOP_BOUND. */
-    protected static final String PROPERTY_INITAL_TOP_BOUND    = "leaflet.initial.top.bound";
+    protected static final String PROPERTY_INITAL_TOP_BOUND = "leaflet.initial.top.bound";
 
     /** The Constant PROPERTY_INITAL_RIGHT_BOUND. */
-    protected static final String PROPERTY_INITAL_RIGHT_BOUND  = "leaflet.initial.right.bound";
+    protected static final String PROPERTY_INITAL_RIGHT_BOUND = "leaflet.initial.right.bound";
 
     /** The Constant PROPERTY_MAX_BOTTOM_BOUND. */
-    protected static final String PROPERTY_MAX_BOTTOM_BOUND    = "leaflet.max.bottom.bound";
+    protected static final String PROPERTY_MAX_BOTTOM_BOUND = "leaflet.max.bottom.bound";
 
     /** The Constant PROPERTY_MAX_LEFT_BOUND. */
-    protected static final String PROPERTY_MAX_LEFT_BOUND      = "leaflet.max.left.bound";
+    protected static final String PROPERTY_MAX_LEFT_BOUND = "leaflet.max.left.bound";
 
     /** The Constant PROPERTY_MAX_TOP_BOUND. */
-    protected static final String PROPERTY_MAX_TOP_BOUND       = "leaflet.max.top.bound";
+    protected static final String PROPERTY_MAX_TOP_BOUND = "leaflet.max.top.bound";
 
     /** The Constant PROPERTY_MAX_RIGHT_BOUND. */
-    protected static final String PROPERTY_MAX_RIGHT_BOUND     = "leaflet.max.right.bound";
+    protected static final String PROPERTY_MAX_RIGHT_BOUND = "leaflet.max.right.bound";
 
     /** The Constant PROPERTY_MAX_NATIVE_ZOOM. */
-    protected static final String PROPERTY_MAX_NATIVE_ZOOM     = "leaflet.max.native.zoom";
+    protected static final String PROPERTY_MAX_NATIVE_ZOOM = "leaflet.max.native.zoom";
 
     /** The Constant PROPERTY_MAX_ZOOM. */
-    protected static final String PROPERTY_MAX_ZOOM            = "leaflet.max.zoom";
+    protected static final String PROPERTY_MAX_ZOOM = "leaflet.max.zoom";
 
     /** The Constant PROPERTY_MIN_ZOOM. */
-    protected static final String PROPERTY_MIN_ZOOM            = "leaflet.min.zoom";
+    protected static final String PROPERTY_MIN_ZOOM = "leaflet.min.zoom";
 
     /** The Constant PROPERTY_SHOW_METRIC. */
-    protected static final String PROPERTY_SHOW_METRIC         = "leaflet.show.metric";
+    protected static final String PROPERTY_SHOW_METRIC = "leaflet.show.metric";
 
     /** The Constant PROPERTY_SHOW_IMPERIAL. */
-    protected static final String PROPERTY_SHOW_IMPERIAL       = "leaflet.show.imperial";
+    protected static final String PROPERTY_SHOW_IMPERIAL = "leaflet.show.imperial";
 
     /** The Constant PROPERTY_LAYER_TYPE. */
-    protected static final String PROPERTY_LAYER_TYPE          = "layers.layer.type";
+    protected static final String PROPERTY_LAYER_TYPE = "layers.layer.type";
 
     /** The Constant PROPERTY_LAYER_NAME. */
-    protected static final String PROPERTY_LAYER_NAME          = "layers.layer.name";
+    protected static final String PROPERTY_LAYER_NAME = "layers.layer.name";
 
     /** The Constant PROPERTY_LAYER_URL. */
-    protected static final String PROPERTY_LAYER_URL           = "layers.layer.url";
+    protected static final String PROPERTY_LAYER_URL = "layers.layer.url";
 
     /** The Constant PROPERTY_LAYER_BASE_MAP. */
-    protected static final String PROPERTY_LAYER_BASE_MAP      = "layers.layer.basemap";
+    protected static final String PROPERTY_LAYER_BASE_MAP = "layers.layer.basemap";
 
     /** The Constant PROPERTY_LAYER_OPACITY. */
-    protected static final String PROPERTY_LAYER_OPACITY       = "layers.layer.opacity";
+    protected static final String PROPERTY_LAYER_OPACITY = "layers.layer.opacity";
 
     /** The Constant PROPERTY_LAYERS_COUNT. */
-    protected static final String PROPERTY_LAYERS_COUNT        = "layers.count";
+    protected static final String PROPERTY_LAYERS_COUNT = "layers.count";
 
     /** The Constant MARK_RADIUS. */
     // MARKERS
-    protected static final String MARK_RADIUS                  = "position_radius";
+    protected static final String MARK_RADIUS = "position_radius";
 
     /** The Constant MARK_INITIAL_BOTTOM_BOUND. */
-    protected static final String MARK_INITIAL_BOTTOM_BOUND    = "initial_bottom_bound";
+    protected static final String MARK_INITIAL_BOTTOM_BOUND = "initial_bottom_bound";
 
     /** The Constant MARK_INITIAL_LEFT_BOUND. */
-    protected static final String MARK_INITIAL_LEFT_BOUND      = "initial_left_bound";
+    protected static final String MARK_INITIAL_LEFT_BOUND = "initial_left_bound";
 
     /** The Constant MARK_INITIAL_TOP_BOUND. */
-    protected static final String MARK_INITIAL_TOP_BOUND       = "initial_top_bound";
+    protected static final String MARK_INITIAL_TOP_BOUND = "initial_top_bound";
 
     /** The Constant MARK_INITIAL_RIGHT_BOUND. */
-    protected static final String MARK_INITIAL_RIGHT_BOUND     = "initial_right_bound";
+    protected static final String MARK_INITIAL_RIGHT_BOUND = "initial_right_bound";
 
     /** The Constant MARK_MAX_BOTTOM_BOUND. */
-    protected static final String MARK_MAX_BOTTOM_BOUND        = "max_bottom_bound";
+    protected static final String MARK_MAX_BOTTOM_BOUND = "max_bottom_bound";
 
     /** The Constant MARK_MAX_LEFT_BOUND. */
-    protected static final String MARK_MAX_LEFT_BOUND          = "max_left_bound";
+    protected static final String MARK_MAX_LEFT_BOUND = "max_left_bound";
 
     /** The Constant MARK_MAX_TOP_BOUND. */
-    protected static final String MARK_MAX_TOP_BOUND           = "max_top_bound";
+    protected static final String MARK_MAX_TOP_BOUND = "max_top_bound";
 
     /** The Constant MARK_MAX_RIGHT_BOUND. */
-    protected static final String MARK_MAX_RIGHT_BOUND         = "max_right_bound";
+    protected static final String MARK_MAX_RIGHT_BOUND = "max_right_bound";
 
     /** The Constant MARK_MAX_NATIVE_ZOOM. */
-    protected static final String MARK_MAX_NATIVE_ZOOM         = "max_native_zoom";
+    protected static final String MARK_MAX_NATIVE_ZOOM = "max_native_zoom";
 
     /** The Constant MARK_MAX_ZOOM. */
-    protected static final String MARK_MAX_ZOOM                = "max_zoom";
+    protected static final String MARK_MAX_ZOOM = "max_zoom";
 
     /** The Constant MARK_MIN_ZOOM. */
-    protected static final String MARK_MIN_ZOOM                = "min_zoom";
+    protected static final String MARK_MIN_ZOOM = "min_zoom";
 
     /** The Constant MARK_SHOW_METRIC. */
-    protected static final String MARK_SHOW_METRIC             = "show_metric";
+    protected static final String MARK_SHOW_METRIC = "show_metric";
 
     /** The Constant MARK_SHOW_IMPERIAL. */
-    protected static final String MARK_SHOW_IMPERIAL           = "show_imperial";
+    protected static final String MARK_SHOW_IMPERIAL = "show_imperial";
 
     /** The Constant MARK_LAYER_TYPE. */
-    protected static final String MARK_LAYER_TYPE              = "layer_type";
+    protected static final String MARK_LAYER_TYPE = "layer_type";
 
     /** The Constant MARK_LAYER_NAME. */
-    protected static final String MARK_LAYER_NAME              = "layer_name";
+    protected static final String MARK_LAYER_NAME = "layer_name";
 
     /** The Constant MARK_LAYER_URL. */
-    protected static final String MARK_LAYER_URL               = "layer_url";
+    protected static final String MARK_LAYER_URL = "layer_url";
 
     /** The Constant MARK_LAYER_BASE_MAP. */
-    protected static final String MARK_LAYER_BASE_MAP          = "layer_base_map";
+    protected static final String MARK_LAYER_BASE_MAP = "layer_base_map";
 
     /** The Constant MARK_LAYERS_COUNT. */
-    protected static final String MARK_LAYERS_COUNT            = "layers_count";
+    protected static final String MARK_LAYERS_COUNT = "layers_count";
 
     /** The Constant MARK_LAYERS_CONFIG. */
-    protected static final String MARK_LAYERS_CONFIG           = "layers_config";
+    protected static final String MARK_LAYERS_CONFIG = "layers_config";
 
     /** The Constant DEFAULT_OPACITY. */
-    protected static final Double DEFAULT_OPACITY              = 1.0;
+    protected static final Double DEFAULT_OPACITY = 1.0;
 
     /** The Constant TEMPLATE_LEAFTLET_MAP. */
     // TEMPLATES
-    protected static final String TEMPLATE_LEAFTLET_MAP        = "admin/plugins/leaflet/modules/dansmarue/leaflet_map.html";
+    protected static final String TEMPLATE_LEAFTLET_MAP = "admin/plugins/leaflet/modules/dansmarue/leaflet_map.html";
 
     /**
      * Instantiates a new leaflet dans ma rue jsp bean.
