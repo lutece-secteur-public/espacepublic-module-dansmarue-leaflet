@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,33 +33,38 @@
  */
 package fr.paris.lutece.plugins.leaflet.modules.dansmarue.entities;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Address.
  */
+@JsonIgnoreProperties( ignoreUnknown = true )
 public class Address
 {
-    
+
     /** The str libelle typo. */
-    private String  _strLibelleTypo;
-    
+    private String _strLibelleTypo;
+
     /** The x. */
-    private Double  _x;
-    
+    private Double _x;
+
     /** The y. */
-    private Double  _y;
-    
-    /** The str type. */
-    private String  _strType;
-    
+    private Double _y;
+
     /** The n id. */
     private Integer _nId;
+    private Integer _nObjectid;
+    private Integer _nScore;
+    private String _strLibelle;
 
     /**
      * Gets the libelle typo.
      *
      * @return the libelleTypo
      */
+    @JsonProperty( "Libelletypo" )
     public String getLibelleTypo( )
     {
         return _strLibelleTypo;
@@ -68,8 +73,10 @@ public class Address
     /**
      * Sets the libelle typo.
      *
-     * @param strLibelleTypo            the libelleTypo to set
+     * @param strLibelleTypo
+     *            the libelleTypo to set
      */
+    @JsonProperty( "Libelletypo" )
     public void setLibelleTypo( String strLibelleTypo )
     {
         _strLibelleTypo = strLibelleTypo;
@@ -80,6 +87,7 @@ public class Address
      *
      * @return the x
      */
+    @JsonProperty( "X" )
     public Double getX( )
     {
         return _x;
@@ -88,8 +96,10 @@ public class Address
     /**
      * Sets the x.
      *
-     * @param x            the x to set
+     * @param x
+     *            the x to set
      */
+    @JsonProperty( "X" )
     public void setX( Double x )
     {
         _x = x;
@@ -100,6 +110,7 @@ public class Address
      *
      * @return the y
      */
+    @JsonProperty( "Y" )
     public Double getY( )
     {
         return _y;
@@ -108,31 +119,13 @@ public class Address
     /**
      * Sets the y.
      *
-     * @param y            the y to set
+     * @param y
+     *            the y to set
      */
+    @JsonProperty( "Y" )
     public void setY( Double y )
     {
         _y = y;
-    }
-
-    /**
-     * Gets the type.
-     *
-     * @return the type
-     */
-    public String getType( )
-    {
-        return _strType;
-    }
-
-    /**
-     * Sets the type.
-     *
-     * @param strType            the type to set
-     */
-    public void setType( String strType )
-    {
-        _strType = strType;
     }
 
     /**
@@ -140,6 +133,7 @@ public class Address
      *
      * @return the id
      */
+    @JsonProperty( "Id" )
     public Integer getId( )
     {
         return _nId;
@@ -148,10 +142,49 @@ public class Address
     /**
      * Sets the id.
      *
-     * @param nId            the id to set
+     * @param nId
+     *            the id to set
      */
+    @JsonProperty( "Id" )
     public void setId( Integer nId )
     {
         _nId = nId;
     }
+
+    @JsonProperty( "Objectid" )
+    public Integer getObjectid( )
+    {
+        return _nObjectid;
+    }
+
+    @JsonProperty( "Objectid" )
+    public void setObjectid( Integer objectid )
+    {
+        _nObjectid = objectid;
+    }
+
+    @JsonProperty( "Score" )
+    public Integer getScore( )
+    {
+        return _nScore;
+    }
+
+    @JsonProperty( "Score" )
+    public void setScore( Integer score )
+    {
+        _nScore = score;
+    }
+
+    @JsonProperty( "Libelle" )
+    public String getLibelle( )
+    {
+        return _strLibelle;
+    }
+
+    @JsonProperty( "Libelle" )
+    public void setLibelle( String libelle )
+    {
+        _strLibelle = libelle;
+    }
+
 }

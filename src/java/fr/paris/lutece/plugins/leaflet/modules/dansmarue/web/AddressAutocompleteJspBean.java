@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,41 +50,41 @@ public class AddressAutocompleteJspBean
 
     /** The Constant PROPERTY_DELAY. */
     // Properties
-    private static final String PROPERTY_DELAY               = "address.autocomplete.delay";
+    private static final String PROPERTY_DELAY = "address.autocomplete.delay";
 
     /** The Constant PROPERTY_MIN_LENGTH. */
-    private static final String PROPERTY_MIN_LENGTH          = "address.autocomplete.minLength";
+    private static final String PROPERTY_MIN_LENGTH = "address.autocomplete.minLength";
 
     /** The Constant PROPERTY_TYPES. */
-    private static final String PROPERTY_TYPES               = "address.autocomplete.types";
+    private static final String PROPERTY_TYPES = "address.autocomplete.types";
 
     /** The Constant PROPERTY_NB_RESULTS. */
-    private static final String PROPERTY_NB_RESULTS          = "address.autocomplete.nbResults";
+    private static final String PROPERTY_NB_RESULTS = "address.autocomplete.nbResults";
 
     /** The Constant PROPERTY_CLIENT_ID. */
-    private static final String PROPERTY_CLIENT_ID           = "address.autocomplete.clientId";
+    private static final String PROPERTY_CLIENT_ID = "address.autocomplete.clientId";
 
     /** The Constant PROPERTY_URL. */
-    private static final String PROPERTY_URL                 = "address.autocomplete.url";
+    private static final String PROPERTY_URL = "address.autocomplete.url";
 
     /** The Constant MARK_DELAY. */
     // Markers
-    private static final String MARK_DELAY                   = "delay";
+    private static final String MARK_DELAY = "delay";
 
     /** The Constant MARK_MIN_LENGTH. */
-    private static final String MARK_MIN_LENGTH              = "min_length";
+    private static final String MARK_MIN_LENGTH = "min_length";
 
     /** The Constant MARK_TYPES. */
-    private static final String MARK_TYPES                   = "types";
+    private static final String MARK_TYPES = "types";
 
     /** The Constant MARK_NB_RESULTS. */
-    private static final String MARK_NB_RESULTS              = "nb_results";
+    private static final String MARK_NB_RESULTS = "nb_results";
 
     /** The Constant MARK_CLIENT_ID. */
-    private static final String MARK_CLIENT_ID               = "client_id";
+    private static final String MARK_CLIENT_ID = "client_id";
 
     /** The Constant MARK_URL. */
-    private static final String MARK_URL                     = "url";
+    private static final String MARK_URL = "url";
 
     /** The Constant TEMPLATE_ADRESS_AUTOCOMPLETE. */
     // TEMPLATES

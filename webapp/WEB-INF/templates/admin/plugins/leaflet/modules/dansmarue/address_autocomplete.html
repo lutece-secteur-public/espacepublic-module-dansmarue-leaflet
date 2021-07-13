@@ -5,32 +5,44 @@ var projDestSRID = new Proj4js.Proj("EPSG:4326");
 function addAutocomplete(field,selectCallback){
 	$('#' + field).autocomplete({
 		source : function(request, reponse){
+			jsonParms='{"Entites":"${types}"}';
 			$.ajax({
-				url : "${url}",
+				url : "${url}${client_id}/poiauto/"+request.term,
 				dataType: "jsonp",
-			    data: {
-					types : "${types}",
-					nbResults : ${nb_results}, 
-			    	clientId : "${client_id}",
-					query : request.term
+				data: {
+			    	Parms: jsonParms
 			    },
 			    success : function(data){
 	                reponse($.map(data.result,function(elem){
 						return {
-							label: elem.libelleTypo,
-							lng: elem.x,
-							lat: elem.y
+							//Autocompletion
+							label: elem.Libelletypo,
+							lng: elem.X,
+							lat: elem.Y,
+							objectid: elem.Objectid
 						}
 					}));
 	        	}
 	    	});
 		},
 		select: function (event, ui) {
+		   //selection de l'adresse -> conversion des coordonnées avec le srid 27561
    		   if(null != selectCallback){
-				selectCallback(ui.item);
+   		   		console.log(ui.item);
+   		   		getPoiByObjectid(ui.item, selectCallback);
 		   }
    	    },
    	   minLength: ${min_length},
    	   delay: ${delay}
+	});
+}
+
+function getPoiByObjectid (item,selectCallback)
+{
+	$.get("${url}${client_id}/objectid/("+item.objectid+",27561)", 
+	function( data ) {
+		item.lng = data.Features[0].properties.X;
+		item.lat = data.Features[0].properties.Y;
+		selectCallback(item);
 	});
 }

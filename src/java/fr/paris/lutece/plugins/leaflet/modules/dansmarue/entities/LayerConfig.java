@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,36 +33,35 @@
  */
 package fr.paris.lutece.plugins.leaflet.modules.dansmarue.entities;
 
-
 /**
  * Map config for leaflet use.
  */
 public class LayerConfig
 {
-    
+
     /** The str layer type. */
-    private String  _strLayerType;
-    
+    private String _strLayerType;
+
     /** The str layer url. */
-    private String  _strLayerUrl;
-    
+    private String _strLayerUrl;
+
     /** The max native zoom. */
     private Integer _maxNativeZoom;
-    
+
     /** The max zoom. */
     private Integer _maxZoom;
-    
+
     /** The min zoom. */
     private Integer _minZoom;
-    
+
     /** The str layer name. */
-    private String  _strLayerName;
-    
+    private String _strLayerName;
+
     /** The str layer base map. */
-    private String  _strLayerBaseMap;
-    
+    private String _strLayerBaseMap;
+
     /** The layer opacity. */
-    private Double  _layerOpacity;
+    private Double _layerOpacity;
 
     /**
      * Gets the layer type.
@@ -77,7 +76,8 @@ public class LayerConfig
     /**
      * Sets the layer type.
      *
-     * @param layerType            the layerType to set
+     * @param layerType
+     *            the layerType to set
      */
     public void setLayerType( String layerType )
     {
@@ -97,7 +97,8 @@ public class LayerConfig
     /**
      * Sets the layer url.
      *
-     * @param layerUrl            the layerUrl to set
+     * @param layerUrl
+     *            the layerUrl to set
      */
     public void setLayerUrl( String layerUrl )
     {
@@ -117,7 +118,8 @@ public class LayerConfig
     /**
      * Sets the max native zoom.
      *
-     * @param maxNativeZoom            the maxNativeZoom to set
+     * @param maxNativeZoom
+     *            the maxNativeZoom to set
      */
     public void setMaxNativeZoom( Integer maxNativeZoom )
     {
@@ -137,7 +139,8 @@ public class LayerConfig
     /**
      * Sets the max zoom.
      *
-     * @param maxZoom            the maxZoom to set
+     * @param maxZoom
+     *            the maxZoom to set
      */
     public void setMaxZoom( Integer maxZoom )
     {
@@ -157,7 +160,8 @@ public class LayerConfig
     /**
      * Sets the min zoom.
      *
-     * @param minZoom            the minZoom to set
+     * @param minZoom
+     *            the minZoom to set
      */
     public void setMinZoom( Integer minZoom )
     {
@@ -177,7 +181,8 @@ public class LayerConfig
     /**
      * Sets the layer name.
      *
-     * @param layerName            the layerName to set
+     * @param layerName
+     *            the layerName to set
      */
     public void setLayerName( String layerName )
     {
@@ -197,7 +202,8 @@ public class LayerConfig
     /**
      * Sets the layer base map.
      *
-     * @param layerBaseMap            the layerBaseMap to set
+     * @param layerBaseMap
+     *            the layerBaseMap to set
      */
     public void setLayerBaseMap( String layerBaseMap )
     {
@@ -217,7 +223,8 @@ public class LayerConfig
     /**
      * Sets the layer opacity.
      *
-     * @param layerOpacity            the layerOpacity to set
+     * @param layerOpacity
+     *            the layerOpacity to set
      */
     public void setLayerOpacity( Double layerOpacity )
     {
