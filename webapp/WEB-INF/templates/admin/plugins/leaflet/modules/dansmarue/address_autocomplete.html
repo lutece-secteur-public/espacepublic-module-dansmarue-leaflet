@@ -1,32 +1,27 @@
-var projSourceSRID = new Proj4js.Proj("EPSG:27561");
-var projSourceMapSRID = new Proj4js.Proj("EPSG:27561");
+var projSourceSRID = new Proj4js.Proj("EPSG:2154");
+var projSourceMapSRID = new Proj4js.Proj("EPSG:2154");
 var projDestSRID = new Proj4js.Proj("EPSG:4326");
 
 function addAutocomplete(field,selectCallback){
 	$('#' + field).autocomplete({
 		source : function(request, reponse){
-			jsonParms='{"Entites":"${types}"}';
 			$.ajax({
-				url : "${url}${client_id}/poiauto/"+request.term,
-				dataType: "jsonp",
-				data: {
-			    	Parms: jsonParms
-			    },
+				url : "${url}?q="+request.term,
 			    success : function(data){
-	                reponse($.map(data.result,function(elem){
+	                reponse($.map(data.features,function(elem){
 						return {
 							//Autocompletion
-							label: elem.Libelletypo,
-							lng: elem.X,
-							lat: elem.Y,
-							objectid: elem.Objectid
+							label: elem.properties.label,
+							lng: elem.properties.x,
+							lat: elem.properties.y,
+							objectid: elem.properties.id
 						}
 					}));
 	        	}
 	    	});
 		},
 		select: function (event, ui) {
-		   //selection de l'adresse -> conversion des coordonnées avec le srid 27561
+		   //selection de l'adresse -> conversion des coordonnées avec le srid 2154
    		   if(null != selectCallback){
    		   		console.log(ui.item);
    		   		getPoiByObjectid(ui.item, selectCallback);
@@ -39,10 +34,5 @@ function addAutocomplete(field,selectCallback){
 
 function getPoiByObjectid (item,selectCallback)
 {
-	$.get("${url}${client_id}/objectid/("+item.objectid+",27561)", 
-	function( data ) {
-		item.lng = data.Features[0].properties.X;
-		item.lat = data.Features[0].properties.Y;
-		selectCallback(item);
-	});
+	selectCallback(item);
 }
