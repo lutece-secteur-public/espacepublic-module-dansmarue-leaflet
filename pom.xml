@@ -4,11 +4,11 @@
   <parent>
     <groupId>fr.paris.lutece.tools</groupId>
     <artifactId>lutece-global-pom</artifactId>
-    <version>5.0.2</version>
+    <version>5.1.2</version>
   </parent>
   <groupId>fr.paris.lutece.plugins</groupId>
   <artifactId>module-leaflet-dansmarue</artifactId>
-  <version>6.5.4-SNAPSHOT</version>
+  <version>6.5.6-SNAPSHOT</version>
   <packaging>lutece-plugin</packaging>
   <name>Lutece Leaflet module for DansMaRue</name>
   <url>https://dev.lutece.paris.fr/gitlab/tmma/r59/module-leaflet-dansmarue</url>
@@ -24,6 +24,15 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <sonar.sources>src/java</sonar.sources>
   </properties>
+ 	<dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>fr.paris.lutece</groupId>
+        <artifactId>lutece-core</artifactId>
+        <version>6.1.0</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <dependencies>
     <dependency>
       <groupId>fr.paris.lutece</groupId>
@@ -61,44 +70,4 @@
             </snapshots>
         </repository>       
     </repositories>
-
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>2.5.3</version>
-        <configuration combine.self="override">
-          <tagNameFormat>module-leaflet-dansmarue-@{project.version}</tagNameFormat>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.7.4.201502262128</version>
-        <executions>
-          <execution>
-            <id>pre-unit-test</id>
-            <goals>
-              <goal>prepare-agent</goal>
-            </goals>
-            <configuration>
-              <destFile>../target/coverage-reports/jacoco-unit.exec</destFile>
-              <append>true</append>
-            </configuration>
-          </execution>
-          <execution>
-            <id>post-unit-test</id>
-            <phase>test</phase>
-            <goals>
-              <goal>report</goal>
-            </goals>
-            <configuration>
-              <dataFile>../target/coverage-reports/jacoco-unit.exec</dataFile>
-              <outputDirectory>../target/coverage-reports/jacoco-ut</outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
 </project>
