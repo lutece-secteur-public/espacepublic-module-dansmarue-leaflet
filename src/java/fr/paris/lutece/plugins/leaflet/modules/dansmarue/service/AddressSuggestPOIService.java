@@ -33,23 +33,21 @@
  */
 package fr.paris.lutece.plugins.leaflet.modules.dansmarue.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.paris.lutece.plugins.leaflet.modules.dansmarue.entities.Address;
+import fr.paris.lutece.portal.service.util.AppLogService;
+import fr.paris.lutece.portal.service.util.AppPropertiesService;
+import fr.paris.lutece.util.httpaccess.HttpAccess;
+import fr.paris.lutece.util.httpaccess.HttpAccessException;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.util.UriUtils;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import org.apache.commons.lang.StringUtils;
-import org.springframework.web.util.UriUtils;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import fr.paris.lutece.plugins.leaflet.modules.dansmarue.entities.Address;
-import fr.paris.lutece.portal.service.util.AppLogService;
-import fr.paris.lutece.portal.service.util.AppPropertiesService;
-import fr.paris.lutece.util.httpaccess.HttpAccess;
-import fr.paris.lutece.util.httpaccess.HttpAccessException;
 
 /**
  * AddressSuggestPOIService.
@@ -85,7 +83,7 @@ public class AddressSuggestPOIService implements IAddressSuggestPOIService
 
             response = httpAccess.doGet( url + UriUtils.encode( param, StandardCharsets.UTF_8.toString( ) ) );
         }
-        catch( HttpAccessException | UnsupportedEncodingException ex )
+        catch( HttpAccessException ex )
         {
             AppLogService.error( ERROR_MESSAGE, ex );
         }
